@@ -1,10 +1,24 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { IBM_Plex_Sans_KR, Nanum_Pen_Script } from 'next/font/google'
 import './globals.css'
 
+const plexKr = IBM_Plex_Sans_KR({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-plex-kr',
+})
+
+const nanumPen = Nanum_Pen_Script({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-nanum-pen',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Texwich — 하루를 쌓는 텍스처 다이어리',
+  description:
+    '샌드위치처럼 내지를 쌓아 하루하루를 기록하는 콜라주 다이어리, Texwich (Texture + Swatch)',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,11 +40,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'light',
+  themeColor: '#F3EFE3',
 }
 
 export default function RootLayout({
@@ -39,8 +50,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html
+      lang="ko"
+      className={`light bg-background ${plexKr.variable} ${nanumPen.variable}`}
+    >
+      <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
