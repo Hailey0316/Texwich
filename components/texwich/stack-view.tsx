@@ -122,7 +122,7 @@ export function StackView({ layers, selectedId, onSelectLayer }: StackViewProps)
         {/* bottom bread */}
         <div
           aria-hidden="true"
-          className="-mt-1 h-6 w-44 rounded-b-2xl rounded-t-md border border-bread-crust/50 bg-bread shadow-sm"
+          className="-mt-1 h-6 w-44 rounded-b-2xl rounded-t-md border border-bread-crust/50 bg-bread shadow-sm diary-inner-page"
         />
       </div>
 
