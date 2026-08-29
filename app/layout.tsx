@@ -1,19 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { IBM_Plex_Sans_KR, Nanum_Pen_Script } from 'next/font/google'
 import './globals.css'
 
-const plexKr = IBM_Plex_Sans_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-plex-kr',
-})
-
-const nanumPen = Nanum_Pen_Script({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-nanum-pen',
-})
 
 export const metadata: Metadata = {
   title: 'Texwich — 하루를 쌓는 텍스처 다이어리',
@@ -44,19 +32,11 @@ export const viewport: Viewport = {
   themeColor: '#F3EFE3',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="ko"
-      className={`light bg-background ${plexKr.variable} ${nanumPen.variable}`}
-    >
-      <body className="font-sans antialiased">
+    <html lang="ko">
+      <body class="antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
