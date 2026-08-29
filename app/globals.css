@@ -4,6 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'SeoulNamsan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -165,5 +172,6 @@
   }
   body {
     @apply bg-background text-foreground;
+  font-family: 'SeoulNamsan', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif !important;
   }
 }
