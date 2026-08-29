@@ -11,6 +11,14 @@
   font-display: swap;
 }
 
+:root {
+  --font-sans: 'SeoulNamsan', sans-serif !important;
+}
+
+*, *::before, *::after, body, h1, h2, h3, h4, h5, h6, button, input, textarea {
+  font-family: 'SeoulNamsan', sans-serif !important;
+}
+
 @theme inline {
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
