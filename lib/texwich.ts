@@ -83,6 +83,60 @@ export function getSticker(id?: string) {
   return STICKERS.find((s) => s.id === id) ?? STICKERS[0]
 }
 
+export type Tool = 'select' | 'pen' | 'table' | 'eraser'
+
+export interface PaperStyle {
+  mode: 'solid' | 'gradient'
+  color1: string
+  color2: string
+  angle: number
+}
+
+export const DEFAULT_PAPER: PaperStyle = {
+  mode: 'solid',
+  color1: '#FBF6EC',
+  color2: '#F2DFC4',
+  angle: 135,
+}
+
+export const PAPER_PRESETS: PaperStyle[] = [
+  { mode: 'solid', color1: '#FBF6EC', color2: '#F2DFC4', angle: 135 },
+  { mode: 'solid', color1: '#FFFFFF', color2: '#EDEDED', angle: 135 },
+  { mode: 'solid', color1: '#F3EAE0', color2: '#E3D3BE', angle: 135 },
+  { mode: 'solid', color1: '#E9EFE6', color2: '#D5E0CE', angle: 135 },
+  { mode: 'gradient', color1: '#FDF3E3', color2: '#F6D9C1', angle: 160 },
+  { mode: 'gradient', color1: '#EAF1EA', color2: '#F8EFD9', angle: 135 },
+  { mode: 'gradient', color1: '#FBE8E6', color2: '#EDE4F3', angle: 120 },
+  { mode: 'gradient', color1: '#E4EEF6', color2: '#F5EFE0', angle: 200 },
+]
+
+export function paperBackground(paper: PaperStyle) {
+  return paper.mode === 'solid'
+    ? paper.color1
+    : `linear-gradient(${paper.angle}deg, ${paper.color1}, ${paper.color2})`
+}
+
+export interface Stroke {
+  id: string
+  color: string
+  width: number
+  points: [number, number][]
+}
+
+export interface TableShape {
+  id: string
+  x: number
+  y: number
+  w: number
+  h: number
+  rows: number
+  cols: number
+  color: string
+}
+
+export const PEN_COLORS = ['#3B3129', '#C15B3F', '#5B7553', '#3E5C8A', '#B48A3C', '#A06A9C']
+export const PEN_WIDTHS = [2, 4, 7]
+
 export function dateKey(d: Date) {
   const y = d.getFullYear()
   const m = String(d.getMonth() + 1).padStart(2, '0')
